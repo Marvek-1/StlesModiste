@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             Official Brand Hub
           </span>
           <span className="truncate text-stone-200">
-            ✨ <strong className="text-white">Stylemodiste</strong> • Section 1: Quality Fabrics (Crepe, Silk, Chiffon, Chantilly, Wrappers) | Section 2: Grade A Thrift Wears • Paystack Escrow
+            ✨ <strong className="text-white">Stylemodiste</strong> • Bespoke Yardages & Grade A Thrift Vault • Paystack Escrow & Shipbubble Courier Express
           </span>
         </div>
 

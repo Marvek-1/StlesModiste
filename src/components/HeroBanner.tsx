@@ -42,18 +42,18 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           <div className="relative z-10 space-y-3 sm:space-y-4">
             <div className="inline-flex items-center space-x-2 bg-emerald-800/80 border border-emerald-600/50 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold text-emerald-200 backdrop-blur-sm">
               <Sparkles className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
-              <span>Official Fashion Brand Hub • Stylemodiste</span>
+              <span>Stylemodiste • Two Dedicated Fashion Hubs</span>
             </div>
 
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-              One Fashion Brand. <br />
+              Bespoke Yardages. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-emerald-300 to-teal-200">
-                Two Dedicated Sections.
+                Iconic Thrift Vault.
               </span>
             </h1>
 
             <p className="text-stone-300 text-xs sm:text-base leading-relaxed max-w-xl">
-              Navigate seamlessly between <strong className="text-amber-300">Section 1: Quality Fabrics</strong> (Crepe, Silk, Chiffon, Chantilly Lace, Wrappers) and <strong className="text-emerald-300">Section 2: Thrift Wears</strong> (Grade A vintage tops, dresses, denim, kicks).
+              From luxury <strong className="text-amber-300">Fabrics</strong> (Crepe, Silk, Chiffon & Lace) to handpicked <strong className="text-emerald-300">Thrift Grails</strong> — Stylemodiste crafts your style with Paystack Escrow & nationwide delivery.
             </p>
 
             {/* Quick Dual Section Toggles inside Hero */}
