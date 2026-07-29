@@ -1,11 +1,11 @@
 import { Product, Seller, CourierProvider, ProductReview } from '../types';
 
-const imgRedRings = '/src/assets/images/stylemodiste_red_rings_crepe_1785335086374.jpg';
-const imgGreenTulip = '/src/assets/images/stylemodiste_green_tulip_silk_1785335100874.jpg';
-const imgBlueFloral = '/src/assets/images/stylemodiste_blue_floral_chiffon_1785335115264.jpg';
-const imgFlameSatin = '/src/assets/images/stylemodiste_flame_satin_1785335144490.jpg';
-const imgFuchsiaBaroque = '/src/assets/images/stylemodiste_fuchsia_baroque_1785335157647.jpg';
-const imgSwirlChiffon = '/src/assets/images/stylemodiste_swirl_chiffon_1785335170751.jpg';
+import imgRedRings from '../assets/images/stylemodiste_red_rings_crepe_1785335086374.jpg';
+import imgGreenTulip from '../assets/images/stylemodiste_green_tulip_silk_1785335100874.jpg';
+import imgBlueFloral from '../assets/images/stylemodiste_blue_floral_chiffon_1785335115264.jpg';
+import imgFlameSatin from '../assets/images/stylemodiste_flame_satin_1785335144490.jpg';
+import imgFuchsiaBaroque from '../assets/images/stylemodiste_fuchsia_baroque_1785335157647.jpg';
+import imgSwirlChiffon from '../assets/images/stylemodiste_swirl_chiffon_1785335170751.jpg';
 
 export const INITIAL_SELLERS: Seller[] = [
   {
