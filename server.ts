@@ -523,6 +523,267 @@ async function startServer() {
     }
   });
 
+  // GET ALL ORDERS (PAST PURCHASES HISTORY)
+  app.get('/api/orders', (req: Request, res: Response) => {
+    // If ordersStore is empty, populate initial past purchase history for instant showcase
+    if (ordersStore.length === 0) {
+      ordersStore = [
+        {
+          id: 'ord-101',
+          waybillNumber: 'GIGL-LOS-ABJ-99201',
+          items: [
+            {
+              product: productsStore[0] || INITIAL_PRODUCTS[0],
+              quantity: 1
+            },
+            {
+              product: productsStore[2] || INITIAL_PRODUCTS[2],
+              quantity: 1
+            }
+          ],
+          subtotalNaira: 28500,
+          deliveryFeeNaira: 2500,
+          totalNaira: 31000,
+          paymentMethod: 'paystack_escrow',
+          paymentStatus: 'Paid (Escrow Secured)',
+          paymentReference: 'OKX-PAYSTACK-8829104',
+          deliveryAddress: {
+            fullName: 'Chisom Eze',
+            phone: '+234 812 345 6789',
+            email: 'chisom@example.com',
+            state: 'Lagos',
+            lga: 'Ikeja',
+            streetAddress: '14 Allen Avenue, Ikeja',
+            nearestLandmark: 'Opposite Ikeja City Mall'
+          },
+          courier: 'GIG Logistics (GIGL)',
+          courierPhone: '+234 800 444 5645',
+          status: 'In Transit',
+          estimatedDelivery: 'Tomorrow, 2:00 PM',
+          createdAt: new Date(Date.now() - 3600000 * 4).toLocaleString('en-NG', { timeZone: 'Africa/Lagos' }),
+          trackingSteps: [
+            {
+              title: 'Order Secured & Escrow Activated',
+              description: 'Payment of ₦31,000 deposited in Stylemodiste Paystack Escrow.',
+              timestamp: 'Today, 10:15 AM',
+              completed: true,
+              current: false,
+              location: 'Yaba, Lagos'
+            },
+            {
+              title: 'Seller Item Inspection & Packaging',
+              description: 'Seller packed item with sanitized eco-wrap.',
+              timestamp: 'Today, 11:30 AM',
+              completed: true,
+              current: false,
+              location: 'Stylemodiste Hub'
+            },
+            {
+              title: 'Handed Over to Courier Hub',
+              description: 'Scanned at GIGL Ikeja Hub terminal. Waybill #GIGL-LOS-ABJ-99201.',
+              timestamp: 'Today, 02:45 PM',
+              completed: true,
+              current: true,
+              location: 'GIGL Central Hub'
+            },
+            {
+              title: 'Out for Local Delivery',
+              description: 'Assigned to Bolt Delivery Rider #421 for doorstep dispatch.',
+              timestamp: 'Expected Tomorrow 10:00 AM',
+              completed: false,
+              current: false,
+              location: 'En-route'
+            },
+            {
+              title: 'Delivered & Buyer Confirmation',
+              description: 'Awaiting buyer signature & inspection.',
+              timestamp: 'Expected Tomorrow 02:00 PM',
+              completed: false,
+              current: false,
+              location: '14 Allen Avenue, Ikeja'
+            }
+          ]
+        },
+        {
+          id: 'ord-102',
+          waybillNumber: 'KWIK-LOS-VI-77342',
+          items: [
+            {
+              product: productsStore[1] || INITIAL_PRODUCTS[1],
+              quantity: 1
+            }
+          ],
+          subtotalNaira: 18000,
+          deliveryFeeNaira: 2000,
+          totalNaira: 20000,
+          paymentMethod: 'paystack_escrow',
+          paymentStatus: 'Paid (Escrow Secured)',
+          paymentReference: 'OKX-PAYSTACK-9910482',
+          deliveryAddress: {
+            fullName: 'Chisom Eze',
+            phone: '+234 812 345 6789',
+            email: 'chisom@example.com',
+            state: 'Lagos',
+            lga: 'Eti-Osa',
+            streetAddress: 'Plot 82, Adeola Odeku, Victoria Island',
+            nearestLandmark: 'Near Zenith Bank HQ'
+          },
+          courier: 'Bolt Delivery (Bolt Send)',
+          courierPhone: '+234 809 111 2233',
+          status: 'Out for Delivery',
+          estimatedDelivery: 'Today, 4:30 PM',
+          createdAt: new Date(Date.now() - 3600000 * 24).toLocaleString('en-NG', { timeZone: 'Africa/Lagos' }),
+          trackingSteps: [
+            {
+              title: 'Order Secured & Escrow Activated',
+              description: 'Payment of ₦20,000 deposited in Paystack Escrow.',
+              timestamp: 'Yesterday, 09:00 AM',
+              completed: true,
+              current: false,
+              location: 'Victoria Island, Lagos'
+            },
+            {
+              title: 'Seller Item Inspection & Packaging',
+              description: 'Item quality verified and sealed.',
+              timestamp: 'Yesterday, 01:15 PM',
+              completed: true,
+              current: false,
+              location: 'Seller Hub'
+            },
+            {
+              title: 'Handed Over to Courier Hub',
+              description: 'Waybill #KWIK-LOS-VI-77342 generated.',
+              timestamp: 'Today, 08:30 AM',
+              completed: true,
+              current: false,
+              location: 'Kwik Dispatch Hub'
+            },
+            {
+              title: 'Out for Local Delivery',
+              description: 'Rider is 12 mins away from delivery address.',
+              timestamp: 'Today, 03:50 PM',
+              completed: true,
+              current: true,
+              location: 'Adeola Odeku, VI'
+            },
+            {
+              title: 'Delivered & Buyer Confirmation',
+              description: 'Pending buyer confirmation on receipt.',
+              timestamp: 'Expected Today 04:30 PM',
+              completed: false,
+              current: false,
+              location: 'Adeola Odeku, VI'
+            }
+          ]
+        },
+        {
+          id: 'ord-103',
+          waybillNumber: 'SPDF-ABJ-44021',
+          items: [
+            {
+              product: productsStore[3] || INITIAL_PRODUCTS[3],
+              quantity: 1
+            }
+          ],
+          subtotalNaira: 24000,
+          deliveryFeeNaira: 3500,
+          totalNaira: 27500,
+          paymentMethod: 'paystack_escrow',
+          paymentStatus: 'Paid (Escrow Secured)',
+          paymentReference: 'OKX-PAYSTACK-3310928',
+          deliveryAddress: {
+            fullName: 'Chisom Eze',
+            phone: '+234 812 345 6789',
+            email: 'chisom@example.com',
+            state: 'Abuja',
+            lga: 'Abuja Municipal',
+            streetAddress: '24 Aminu Kano Crescent, Wuse II',
+            nearestLandmark: 'Near Banex Plaza'
+          },
+          courier: 'Speedaf Express',
+          courierPhone: '+234 800 773 3323',
+          status: 'Buyer Confirmed',
+          estimatedDelivery: 'Delivered',
+          createdAt: new Date(Date.now() - 3600000 * 72).toLocaleString('en-NG', { timeZone: 'Africa/Lagos' }),
+          trackingSteps: [
+            {
+              title: 'Order Secured & Escrow Activated',
+              description: 'Payment secured in Escrow Vault.',
+              timestamp: '3 Days Ago',
+              completed: true,
+              current: false,
+              location: 'Abuja'
+            },
+            {
+              title: 'Seller Item Inspection & Packaging',
+              description: 'Quality check complete.',
+              timestamp: '3 Days Ago',
+              completed: true,
+              current: false,
+              location: 'Abuja Hub'
+            },
+            {
+              title: 'Handed Over to Courier Hub',
+              description: 'Speedaf express departure.',
+              timestamp: '2 Days Ago',
+              completed: true,
+              current: false,
+              location: 'Speedaf Depot'
+            },
+            {
+              title: 'Out for Local Delivery',
+              description: 'Delivered to Wuse II address.',
+              timestamp: 'Yesterday, 11:00 AM',
+              completed: true,
+              current: false,
+              location: 'Wuse II, Abuja'
+            },
+            {
+              title: 'Delivered & Buyer Confirmation',
+              description: 'Buyer inspected item and confirmed release of escrow funds.',
+              timestamp: 'Yesterday, 02:30 PM',
+              completed: true,
+              current: true,
+              location: 'Wuse II, Abuja'
+            }
+          ]
+        }
+      ];
+    }
+
+    res.json({ success: true, count: ordersStore.length, orders: ordersStore });
+  });
+
+  // CONFIRM DELIVERY & RELEASE ESCROW
+  app.patch('/api/orders/:id/confirm', (req: Request, res: Response) => {
+    const { id } = req.params;
+    const order = ordersStore.find(o => o.id === id || o.waybillNumber === id);
+
+    if (!order) {
+      return res.status(404).json({ success: false, error: 'Order not found' });
+    }
+
+    order.status = 'Buyer Confirmed';
+    order.paymentStatus = 'Paid (Escrow Secured)';
+    
+    // Mark tracking step as completed
+    if (order.trackingSteps && order.trackingSteps.length > 0) {
+      order.trackingSteps = order.trackingSteps.map((step, idx) => {
+        if (idx === order.trackingSteps.length - 1) {
+          return {
+            ...step,
+            completed: true,
+            current: true,
+            timestamp: `Confirmed ${new Date().toLocaleTimeString('en-NG', { hour: '2-digit', minute: '2-digit' })}`
+          };
+        }
+        return { ...step, completed: true, current: false };
+      });
+    }
+
+    res.json({ success: true, message: 'Delivery confirmed and Paystack Escrow funds released to merchant.', order });
+  });
+
   // GET ORDER TRACKING DATA BY WAYBILL OR ID
   app.get('/api/orders/track/:waybill', (req: Request, res: Response) => {
     const waybill = req.params.waybill.trim().toUpperCase();

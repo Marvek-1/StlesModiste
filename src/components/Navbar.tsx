@@ -9,7 +9,7 @@ import {
   Shirt, 
   Layers, 
   PlusCircle, 
-  Sparkle
+  PackageCheck
 } from 'lucide-react';
 import { Category, BrandSection } from '../types';
 
@@ -27,6 +27,7 @@ interface NavbarProps {
   onOpenTracking: () => void;
   onOpenSellerDashboard: () => void;
   onOpenAiAssistant: () => void;
+  onOpenOrderHistory?: () => void;
 }
 
 export const FABRIC_CATEGORIES: Category[] = [
@@ -64,7 +65,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenCart,
   onOpenTracking,
   onOpenSellerDashboard,
-  onOpenAiAssistant
+  onOpenAiAssistant,
+  onOpenOrderHistory
 }) => {
   const currentCategories = selectedSection === 'fabrics' 
     ? FABRIC_CATEGORIES 
