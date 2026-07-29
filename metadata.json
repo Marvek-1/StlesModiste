@@ -1,0 +1,6 @@
+{
+  "name": "Stylemodiste",
+  "description": "Customer-friendly fashion brand featuring Quality & Affordable Fabrics (Crepe, Silk, Chiffon, Chantilly Lace, Wrappers) and Grade A Thrift Wears with Paystack escrow, localized delivery tracking (GIGL, Kwik), and Bento Grid UI layout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
